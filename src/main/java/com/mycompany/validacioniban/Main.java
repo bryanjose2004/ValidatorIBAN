@@ -40,3 +40,14 @@ public class Main {
             } else {
                 System.out.println("❌ RESULTADO: El IBAN es INVÁLIDO o tiene un formato incorrecto.");
             }
+
+            
+            System.out.print("\n¿Desea validar otro IBAN? (S/N): ");
+            opcion = scanner.nextLine().trim().toUpperCase();
+
+        } while (opcion.equals("S") || opcion.equals("SI"));
+
+        System.out.println("\nGracias por usar el validador. ¡Hasta luego!");
+        scanner.close();
+    }
+}
