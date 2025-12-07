@@ -20,3 +20,12 @@ public class ValidadorIBAN {
     public boolean esIbanValido(String iban) {
     
         String ibanLimpio = iban.replaceAll("\\s+", "").toUpperCase();
+        
+ if (ibanLimpio.isEmpty() || ibanLimpio.length() < 15 || ibanLimpio.length() > 34) {
+            return false;
+        }
+
+    
+        if (ibanLimpio.startsWith("ES") && ibanLimpio.length() != 24) {
+            return false;
+        }
