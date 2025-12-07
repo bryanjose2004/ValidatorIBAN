@@ -21,3 +21,22 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         ValidadorIBAN validador = new ValidadorIBAN();
         String opcion;
+
+        System.out.println("==========================================");
+        System.out.println("   SISTEMA DE VALIDACIÓN DE IBAN (JAVA)   ");
+        System.out.println("==========================================");
+
+        do {
+            
+            System.out.print("\n>>> Por favor, introduzca el número IBAN: ");
+            String ibanUsuario = scanner.nextLine();
+
+          
+            boolean esCorrecto = validador.esIbanValido(ibanUsuario);
+
+         
+            if (esCorrecto) {
+                System.out.println("✅ RESULTADO: El IBAN es VÁLIDO.");
+            } else {
+                System.out.println("❌ RESULTADO: El IBAN es INVÁLIDO o tiene un formato incorrecto.");
+            }
