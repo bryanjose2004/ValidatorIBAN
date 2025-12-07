@@ -29,3 +29,27 @@ public class ValidadorIBAN {
         if (ibanLimpio.startsWith("ES") && ibanLimpio.length() != 24) {
             return false;
         }
+ String codigoPaisYControl = ibanLimpio.substring(0, 4);
+        String cuenta = ibanLimpio.substring(4);
+        String ibanReordenado = cuenta + codigoPaisYControl;
+
+     
+        StringBuilder ibanNumerico = new StringBuilder();
+        for (int i = 0; i < ibanReordenado.length(); i++) {
+            char caracter = ibanReordenado.charAt(i);
+            
+            if (Character.isLetter(caracter)) {
+                ibanNumerico.append(Character.getNumericValue(caracter));
+            } else {
+                ibanNumerico.append(caracter);
+            }
+        }
+
+
+        BigInteger numeroGrande = new BigInteger(ibanNumerico.toString());
+        BigInteger divisor = new BigInteger("97");
+        
+
+        return numeroGrande.remainder(divisor).intValue() == 1;
+    }
+}
